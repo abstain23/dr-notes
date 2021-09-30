@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #A {
+        border: 1px solid red;
+        width: 150px;
+        height: 150px;
+        padding: 10px 10px;
+    }
+    #B {
+        border: 1px solid green;
+        width: 80px;
+        height: 80px;
+        padding: 10px 10px;
+    }
+    #C {
+        border: 1px solid blue;
+        width: 40px;
+        height: 40px;
+    }
+</style>
+<body>
+    <div id='A'>
+        <div id="B">
+            <div id="C"></div>
+        </div>
+    </div>
+</body>
+
+<script>
+    const A = document.getElementById('A')
+    const B = document.getElementById('B')
+    const C = document.getElementById('C')
+    A.addEventListener('click', () => {
+        console.log('A')
+    })
+    A.addEventListener('click', () => {
+        console.log('捕获 A')
+    }, true)
+    B.addEventListener('click', () => {
+        console.log('B')
+    })
+    B.addEventListener('click', () => {
+        console.log('捕获 B')
+    }, true)
+    C.addEventListener('click', () => {
+        console.log('捕获 c')
+    })
+    C.addEventListener('click', () => {
+        console.log('C')
+    })
+</script>
+</html>

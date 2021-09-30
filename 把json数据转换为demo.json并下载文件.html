@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function download(url, name) {
+        const a = document.createElement("a");
+        a.download = name;
+        a.rel = "noopener";
+        a.href = url;
+        a.dispatchEvent(new MouseEvent("click"));
+        a.click();
+      }
+      const json = {
+          a: 1,
+          b: 2,
+          c: 3,
+          d: {
+              name: 'cc',
+              age: 18
+          }
+      }
+
+      const str = JSON.stringify(json, null, 2)
+
+      const dataUrl = `data:,${str}`
+      console.log(dataUrl)
+
+      download(dataUrl, 'cc.json')
+
+
+      // 方案二：Text -> Blob -> ObjectURL
+      // const url = URL.createObjectURL(new Blob(str.split('')))
+      // download(url, 'demo1.json')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script>
+    var startDate = new Date();
+  </script>
+  <link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css" rel="stylesheet">
+  <script>
+    console.log("link after script", document.querySelector("h2"));
+    console.log("经过 " + (new Date() - startDate) + " ms");
+  </script>
+  <title>性能</title>
+</head>
+<body>
+  <h1>标题</h1>
+  <h2>标题2</h2>
+</body>
+</html>

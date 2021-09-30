@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #dropArea {
+        width: 300px;
+        height: 300px;
+        border: 1px dashed gray;
+        margin-bottom: 20px;
+      }
+      #dropArea p {
+        text-align: center;
+        color: #999;
+      }
+      #dropArea.highlighted {
+        background-color: #ddd;
+      }
+      #imagePreview {
+        max-height: 250px;
+        overflow-y: scroll;
+      }
+      #imagePreview img {
+        width: 100%;
+        display: block;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dropArea">
+      <p>拖拽上传文件</p>
+      <div id="imagePreview"></div>
+    </div>
+    <script>
+      const dropAreaEle = document.querySelector("#dropArea");
+      const imgPreviewEle = document.querySelector("#imagePreview");
+      const IMAGE_MIME_REGEX = /^image\/(jpe?g|gif|png)$/i;
+
+      ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+        dropAreaEle.addEventListener(eventName, preventDefaults, false);
+        document.body.addEventListener(eventName, preventDefaults, false);
+      });
+
+      ["dragenter", "dragover"].forEach((eventName) => {
+        dropAreaEle.addEventListener(eventName, highlight, false);
+      });
+      ["dragleave", "drop"].forEach((eventName) => {
+        dropAreaEle.addEventListener(eventName, unhighlight, false);
+      });
+      dropAreaEle.addEventListener("drop", handleDrop, false);
+
+      function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = [...dt.files];
+        files.forEach((file) => {
+          previewImage(file, imgPreviewEle);
+        });
+        // 省略文件上传代码
+      }
+
+      function previewImage(file, container) {
+        if (IMAGE_MIME_REGEX.test(file.type)) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            let img = document.createElement("img");
+            img.src = e.target.result;
+            container.append(img);
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      // 添加高亮样式
+      function highlight(e) {
+        dropAreaEle.classList.add("highlighted");
+      }
+
+      // 移除高亮样式
+      function unhighlight(e) {
+        dropAreaEle.classList.remove("highlighted");
+      }
+
+      function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    </script>
+  </body>
+</html>

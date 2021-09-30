@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>immutablejs</title>
+  </head>
+  <body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/immutable/4.0.0-rc.14/immutable.min.js"
+      integrity="sha512-Ndw/RR7NbYqZryxfps3dyNFjAbK5QmdiWvf2notGnAL/sGkx0dnGOKKGlK9XFWigs01BjqSX2Ws8xrsRNxOwtA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      let map1 = Immutable.Map({});
+
+      for (let i = 0; i < 800; i++) {
+        map1 = map1.set(Math.random(), Math.random());
+      }
+
+      console.log(map1);
+    </script>
+  </body>
+</html>
