@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.12.0/vconsole.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/howler/2.2.3/howler.min.js"></script>
+</head>
+
+<body>
+  <button>error</button>
+  <button>promis error</button>
+  <!-- <audio controls id="audio"
+    src="https://m801.music.126.net/20220223171622/4b7b470d2c76c5220c814d8c9aa7b329/jdyyaac/obj/w5rDlsOJwrLDjj7CmsOj/13153372578/1d8f/f3ad/ccaf/46c0dfc590924bf07602d98f6054be60.m4a"></audio> -->
+  <script>
+    window.onerror = function (event) {
+      console.log('window.onerror', event)
+    }
+
+    window.addEventListener('error', (event) => {
+      console.log('window.addEventListener.error', event)
+    })
+    var vConsole = new VConsole()
+    // const audio = document.getElementById('audio')
+    // audio.addEventListener('timeupdate', () => {
+    //   console.log('time update')
+    // })
+    // audio.addEventListener('seeking', (e) => {
+    //   console.log('seeking~~', e)
+    // })
+    // audio.addEventListener('seeked', (e) => {
+    //   console.log('seeked~~', e)
+    // })
+
+    var sound = new Howl({
+      src: ['test.m4a'],
+      html5: true
+    });
+    sound.play()
+  </script>
+  <script>
+    // console.log(noUndefined) // window.onerror 和 window.addEventListener.error都能捕获
+  </script>
+
+  <script>
+    'use strict';
+    // function bar() {
+    //   console.log(this)
+    // }
+    // bar()
+    // setTimeout(function () {
+    //   console.log('timeout', this)
+    // })
+
+
+  </script>
+  <script>
+    'use strict';
+    // const obj = {}
+    // // 数据属性描述符 访问属性描述符
+    // Object.defineProperty(obj, 'name', {
+    //   value: '落落学姐',
+    //   configurable: false
+    // })
+
+    // delete obj.name
+    // console.log(obj.name)
+
+  </script>
+</body>
+
+</html>
